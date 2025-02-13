@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - Log Expenses</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Expense Tracker</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tracker.html" class="active">Tracker</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="user.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="expense-tracker">
+            <h1>Log Your Expenses</h1>
+
+            <!-- Charts Section -->
+            <div class="charts">
+                <div class="card">
+                    <h3>Expense by Category</h3>
+                    <canvas id="expense-bar-chart"></canvas>
+                </div>
+                <div class="card">
+                    <h3>Spending Distribution</h3>
+                    <canvas id="expense-pie-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Add New Expense Category -->
+            <div class="card new-category-form">
+                <h2>Add New Expense Category</h2>
+                <form id="category-form">
+                    <div class="form-group">
+                        <label for="new-category">Category Name</label>
+                        <input type="text" id="new-category" name="new-category" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn">+ Add Category</button>
+                    </div>
+                </form>
+                <div id="category-icons">
+                    <!-- Icons for default categories -->
+                    <span class="category-icon" title="Groceries">🍎</span>
+                    <span class="category-icon" title="Health">🏥</span>
+                    <span class="category-icon" title="Electronics">💻</span>
+                    <span class="category-icon" title="Transportation">🚗</span>
+                </div>
+            </div>
+
+            <!-- Add New Expense Form -->
+            <div class="card expense-form">
+                <h2>Add New Expense</h2>
+                <form id="expense-form">
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" name="amount" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category" required>
+                            <option value="">Select Category</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description"></textarea>
+                    </div>
+                    <button type="submit" class="btn">+ Add Expense</button>
+                </form>
+            </div>
+
+            <!-- Transaction History Table -->
+            <div class="card transaction-history">
+                <h2>Transaction History</h2>
+                <div class="filter-options">
+                    <select id="category-filter">
+                        <option value="All">All Categories</option>
+                    </select>
+                    <button id="export-csv-btn" class="btn">Export CSV</button>
+                </div>
+                <button class="sort-btn" data-sort="date">Sort by Date</button>
+                <button class="sort-btn" data-sort="category">Sort by Category</button>
+                <button class="sort-btn" data-sort="amount">Sort by Amount</button>
+
+
+                <table id="expenses-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expenses-list">
+                        <!-- Expenses rows will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Summary Section -->
+            <div class="card summary">
+                <h2>Total Expenses</h2>
+                <div id="total-expense" class="expense-summary">$0.00</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Personal Expense Tracker. All rights reserved.</p>
+    </footer>
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/tracker.js"></script>
+</body>
+</html>
